@@ -1,0 +1,8 @@
+type IsSkuUponRequestResponse {
+  isUponRequest: Boolean
+  id: String
+}
+
+
+
+

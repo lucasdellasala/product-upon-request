@@ -1,0 +1,10 @@
+{
+  "product-upon-request":{
+    "component": "ProductUponRequest"
+  },
+  "product-upon-request-wrapper":{
+    "component": "ProductUponRequestWrapper",
+    "composition": "children",
+    "allowed": ["product-upon-request"]
+  }
+}

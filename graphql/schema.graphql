@@ -1,0 +1,4 @@
+type Query {
+  getSettings: GetSettingsResponse
+  isSkuUponRequest(skuId: String!): IsSkuUponRequestResponse
+}
