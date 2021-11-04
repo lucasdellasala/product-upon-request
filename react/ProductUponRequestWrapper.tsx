@@ -19,11 +19,6 @@ function ProductUponRequestWrapper({children}:any) {
       const productBrand = productContextValue.product.brandId
       const productCategory = productContextValue.product.categoryId
 
-      console.log({productContextValue})
-
-      console.log("CONDICION DEL WRAPPER", brandsToShow.includes(productBrand) || categoriesToShow.includes(productCategory))
-      console.log("CONDICION DEL WRAPPER brand", brandsToShow.includes(productBrand))
-      console.log("CONDICION DEL WRAPPER category", categoriesToShow.includes(productCategory))
       if ( brandsToShow.includes(productBrand) || categoriesToShow.includes(productCategory)) {
         setShowApp(true)
       }

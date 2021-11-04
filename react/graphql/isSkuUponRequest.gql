@@ -2,5 +2,6 @@ query isSkuUponRequest($skuId: String!){
   isSkuUponRequest(skuId: $skuId) {
 		id
     isUponRequest
+    hasStock
   }
 }

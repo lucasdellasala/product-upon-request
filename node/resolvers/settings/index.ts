@@ -5,7 +5,7 @@ export const queries = {
         const appId = process.env.VTEX_APP_ID ? process.env.VTEX_APP_ID : ''
 
         const { brands, categories } = await ctx.clients.apps.getAppSettings(appId)
-        console.log("HEYYYYYYYYYYYYYYYYYYY", brands, categories)
+
         return {
           brands: brands.split(','),
           categories: categories.trim().split(','),

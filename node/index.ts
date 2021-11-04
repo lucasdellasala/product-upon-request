@@ -31,15 +31,7 @@ const clients: ClientsConfig<Clients> = {
 declare global {
   type Context = ServiceContext<Clients, State>
 
-  interface BodyColor {
-    color: string
-    votes: number
-  }
-
-  interface State extends RecorderState {
-    body: BodyColor
-  }
-
+  interface State extends RecorderState {}
 }
 
 export default new Service<Clients, RecorderState, Context>({

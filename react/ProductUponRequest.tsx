@@ -27,6 +27,7 @@ const classes = {
 
 function ProductUponRequest({days, uponRequestTagMessage, inStockTagMessage}: any) {
   const [isUponRequest, setIsUponRequest] = useState(false)
+  const [hasStock, setHasStock] = useState(false)
   const productContextValue = useProduct()
   const skuId: string = productContextValue.selectedItem.itemId
   const daysUponRequest = productContextValue.product.skuSpecifications.find((spec: { field : { name: string }}) => spec.field.name === 'days')
@@ -38,6 +39,7 @@ function ProductUponRequest({days, uponRequestTagMessage, inStockTagMessage}: an
   useEffect(() => {
     if (data) {
       setIsUponRequest(data.isSkuUponRequest.isUponRequest)
+      setHasStock(data.isSkuUponRequest.hasStock)
     }
   }, [data, loading, error])
 
@@ -60,12 +62,15 @@ function ProductUponRequest({days, uponRequestTagMessage, inStockTagMessage}: an
       </div>
     )
   }
-
-  return <div key="product-upon-request">
+  if(hasStock){
+    return <div key="product-upon-request">
     {
       isUponRequest? <UponRequestPoster />: <InStockPoster/>
     }
     </div>
+  } else {
+    return <></>
+  }
 }
 
 ProductUponRequest.schema = {

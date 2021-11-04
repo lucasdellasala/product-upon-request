@@ -1,6 +1,7 @@
 type IsSkuUponRequestResponse {
   isUponRequest: Boolean
   id: String
+  hasStock: Boolean
 }
 
 

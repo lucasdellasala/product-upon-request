@@ -5,8 +5,7 @@ export const queries = {
         const appId = process.env.VTEX_APP_ID ? process.env.VTEX_APP_ID : ''
         const {warehouse_1, warehouse_2} = await ctx.clients.apps.getAppSettings(appId)
         const { data } = await ctx.clients.logistics.getSkusStockInWarehouses(skuId)
-        console.log(warehouse_1, warehouse_2)
-        console.log("BALANCE",data.balance)
+
         const WAREHOUSE_ID_UPON_REQUEST = warehouse_2
         const WAREHOUSE_ID_PRINCIPAL = warehouse_1
 
@@ -22,17 +21,30 @@ export const queries = {
             warehouseDataPrincipal.totalQuantity === 0 ||
             (warehouseDataPrincipal.totalQuantity - warehouseDataPrincipal.reservedQuantity <= 0)
             ){
-              console.log("retorna el true")
               return {
                 isUponRequest: true,
-                id: skuId
+                id: skuId,
+                hasStock: true
               }
             }
             }
-        console.log("retorna el false")
+
+        if(warehouseDataUponRequest &&
+          warehouseDataPrincipal &&
+          warehouseDataUponRequest.totalQuantity <= 0 &&
+          warehouseDataPrincipal.totalQuantity <= 0
+          ){
+          return {
+            isUponRequest: false,
+            id: skuId,
+            hasStock: false
+          }
+        }
+
         return {
           isUponRequest: false,
-          id: skuId
+          id: skuId,
+          hasStock: true
         }
       } catch (error) {
         return error
