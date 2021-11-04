@@ -73,15 +73,15 @@ ProductUponRequest.schema = {
   type: 'object',
   properties: {
     days: {
-      text: '10',
-      type: 'string'
+      value: 10,
+      type: 'number'
     },
     uponRequestTagMessage: {
-      text: 'A producir',
+      text: 'Upon Request',
       type: 'string'
     },
     inStockTagMessage: {
-      text: 'En stock',
+      text: 'In Stock',
       type: 'string'
     }
   }
