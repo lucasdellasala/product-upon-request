@@ -10,19 +10,51 @@
 
 It is an application that allows you to select and add to the cart products that do not have stock showing a message that they will have a delay of a certain number of days.
 
-![Media Placeholder](https://user-images.githubusercontent.com/52087100/71204177-42ca4f80-227e-11ea-89e6-e92e65370c69.png)
+![App view](https://user-images.githubusercontent.com/55720621/140690200-2df99f60-7806-44e6-b65c-89e56d816153.png)
 
 ## Functioning 💡
 
-WIP.
+This app works only in the product detail page using two warehouses, one has the real stock of the products and the other has infinite stock for those products that are on demand.
+
+Only if the product belongs to any of the brands or categories expressed in the configuration, the app will work.
+
+If it works, it will validate if there is stock in the main warehouse (the actual stock), if there is stock it will show a label that there is stock, if there is not (and there is stock in the infinite stock warehouse), it will show a label that is upon request and will express the amount of business days.
+
+If there is no stock in any of them, it will not show any label.
 
 ## Configuration 🔧
 
-WIP.
+![App settings](https://user-images.githubusercontent.com/55720621/140690398-2ec52899-8154-4848-a580-272349bd5656.PNG)
 
+You have to define in the configuration (accessing `https://{{accountName}}.myvtex.com/admin/apps/lopmultimedia.product-upon-request@0.x/setup/` ) the following environment variables:
+
+- Warehouse Principal: is the principal warehouse id (with the real stock).
+- Warehouse Infinito: is the upon request warehouse id (with the infinite stock).
+- Marcas afectadas: are the brand ids (separated by commas) that you want to apply the functionality.
+- Categorías afectadas (ids): are the category ids (separated by commas) that you want to apply the functionality. THIS ONLY WORKS FOR TREE END CATEGORIES. Eg: furniture -> armchairs : you can't apply the functionality to furniture (unless some products have as their final category furniture), you have to use the child category.
 ## Setup theme 🤝
 
-WIP.
+First add the `lopmultimedia.product-upon-request` to the peerDependencies in the manifest.json.
+```
+  "peerDependencies": {
+    "lopmultimedia.product-upon-request": "0.x"
+  },
+```
+Then declare the block in the product.jsonc and put the `product-upon-request-wrapper#main` as a children of a layout.
+```
+{
+  "product-upon-request-wrapper#main": {
+    "children": ["product-upon-request#main"]
+  },
+  "product-upon-request#main": {
+    "props": {
+      "days": 2021,
+      "uponRequestTagMessage": "A producir",
+      "inStockTagMessage": "En stock"
+    }
+  }
+}
+```
 
 | Block name   | Description  |
 | -------- | ------------------------ |
