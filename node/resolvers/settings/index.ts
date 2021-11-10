@@ -7,8 +7,8 @@ export const queries = {
         const { brands, categories } = await ctx.clients.apps.getAppSettings(appId)
 
         return {
-          brands: brands.split(','),
-          categories: categories.trim().split(','),
+          brands: brands? brands.split(','): "",
+          categories: categories? categories.trim().split(','): "",
         }
       } catch (error) {
         return error

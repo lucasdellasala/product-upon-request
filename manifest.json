@@ -1,7 +1,7 @@
 {
   "vendor": "lopmultimedia",
   "name": "product-upon-request",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "title": "Product Upon Request",
   "description": "It is an application that allows you to select and add to the cart products that do not have stock showing a message that they will have a delay of a certain number of days.",
   "builders": {
