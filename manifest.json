@@ -1,7 +1,7 @@
 {
   "vendor": "tiendafc",
   "name": "product-upon-request",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Product Upon Request",
   "description": "It is an application that allows you to select and add to the cart products that do not have stock showing a message that they will have a delay of a certain number of days.",
   "builders": {
@@ -23,15 +23,11 @@
       "name": "outbound-access",
       "attrs": {
         "host": "*.vtexcommercestable.com.br",
-        "path": "/catalog_system/pub/products/variations/*"
+        "path": "/api/logistics/pvt/inventory/skus/*"
       }
     },
     {
-      "name": "outbound-access",
-      "attrs": {
-        "host": "*.vtexcommercestable.com.br",
-        "path": "/logistics/pvt/inventory/skus/*"
-      }
+      "name": "LogisticsAdmin"
     },
     {
       "name": "colossus-fire-event"
